@@ -29,14 +29,9 @@ Jumper configuration
 
 In order to support most common types of EPROMs and FLASH EPROMs, a bank of solder jumpers had to be placed on the bottom side of the PCB. They look like this:
 
-```
-PIN1  [X X X]       
-PIN31 [X X X]      
-      [X X X]      
-    28PIN/32PIN
-```
+![EPROM selection jumpers](./images/eprom_jumpers.png)
 
-These jumpers HAVE to be configured before plugging the cartridge to your C64! Different types of EPROMs and their FLASH variants have some pins swapped, and if you are using a chip smaller than the maximum size, the unused adress lines have to be pulled high on the EPROM side to ensure proper functioning. Also, 27C512 is "shorter" by 4 pins, so it's power supply pin must be connected to +5V instead of being allocated as A17 on the larger ones. The rightmost pins of all 4 jumpers are +5V, and the leftmost pins are the address lines. The middle pin of the jumpers are connected according to the table:
+These jumpers HAVE to be configured before plugging the cartridge to your C64! Different types of EPROMs and their FLASH variants have some pins swapped, and if you are using a chip smaller than the maximum size, the unused adress lines have to be pulled high on the EPROM side to ensure proper functioning. Also, 27C512 is "shorter" by 4 pins, so it's power supply pin must be connected to +5V instead of being allocated as A17 on the larger ones. The leftmost pins of all 4 jumpers are +5V, and the rightmost pins are the address lines. The middle pin of the jumpers are connected according to the table:
 
 |    Jumper   | Pin | Description                                 |
 |-------------|-----|---------------------------------------------|
@@ -46,14 +41,11 @@ These jumpers HAVE to be configured before plugging the cartridge to your C64! D
 
 Here is the table for configuring the jumpers on most common variants of EPROMS and their FLASH counterparts.
 
-```
-          27C512          27C010          29F010          27C020          29F020          27C040          29F040
-          ------          ------          ------          ------          ------          ------          ------
-
-PIN1        [X X X]    JA18 [X X=X]    JA18 [X X=X]    JA18 [X X=X]    JA18 [X X=X]    JA18 [X X=X]    JA18 [X=X X]
-PIN31       [X X X]     JF  [X X=X]     JF  [X X=X]     JF  [X X=X]     JF  [X X=X]     JF  [X=X X]     JF  [X X=X]
-28PIN/32PIN [X=X X]    JA17 [X X=X]    JA17 [X X=X]    JA17 [X X=X]    JA17 [X X=X]    JA17 [X X=X]    JA17 [X X=X]
-```
+| Jumper      | 27C512  | 27C010  | 29F010  | 27C020  | 29F020  | 27C040  | 29F040  |
+|-------------|---------|---------|---------|---------|---------|---------|---------|
+| PIN1        | ```[X X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X X=X]``` |
+| PIN31       | ```[X X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X X=X]``` | ```[X=X X]``` |
+| 28PIN/32PIN | ```[X=X X]``` | ```[X X=X]``` | ```[X X=X]``` | ```[X X=X]``` | ```[X X=X]``` | ```[X X=X]``` | ```[X X=X]``` |
 
 Precautions have been taken to ensure the corectness of the table above. Please, check the datasheet of your particular (FLASH) EPROM and configure the jumpers accordingly.
 
@@ -61,6 +53,8 @@ Beyond 512Kb
 ------------
 
 Full 1Mb is achievable using a 27C080 or 27C801 EPROM. Other types of memory are not supported. On the right top side of the PCB there are two jumpers marked as "1MB Extend". You should leave out connections on the jumper PIN1 on the bottom side, move the jumper from CE to OE and connect the 1MB jumper, as seen in the pictures. Note that this breaks Ocean compatibility.
+
+![1mb jumpers](./images/1mb_jumpers.png)
 
 RESET button
 ------------
