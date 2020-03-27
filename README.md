@@ -11,7 +11,7 @@ You will get cheap and professionally made PCBs, I will get credits that will he
 
 Also, if you have to register to that site, [you can use this link](https://www.pcbway.com/setinvite.aspx?inviteid=296307) to get some bonus initial credit (and yield me some more).
 
-![PCB Top](./images/c64-uni-cart_pcb_top.png)
+![PCB Top](./c64-uni-cart_pcb_top.png)
 
 Hardware Description
 --------------------
