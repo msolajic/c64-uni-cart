@@ -9,7 +9,7 @@ This project is free and you can use any PCB manufacturer by downloading the Ger
 
 You will get cheap and professionally made PCBs, I will get credits that will help with this and [other projects](https://www.pcbway.com/project/member/?bmbno=1DE407A1-1650-47).
 
-Also, if you have to register to that site, [you can use this link](https://www.pcbway.com/setinvite.aspx?inviteid=296307) to get some bonus initial credit (and yield me some more).
+Also, if you have to register to that site, [you can use this link](https://www.pcbway.com/setinvite.aspx?inviteid=296307) to get bonus initial credit.
 
 ![PCB Top](./c64-uni-cart_top.png)
 
@@ -27,6 +27,8 @@ The PCB was designed to accomodate various types of EPROMs and their FLASH varia
 Jumper configuration
 --------------------
 
+Do not be intimidated with the amount of jumpers on the board. They are preconfigured for Magic Desk cartridges. Ocean (and others) compatibility is described further below. First, you need to configure the memory selection jumpers.
+
 In order to support most common types of EPROMs and FLASH EPROMs, a bank of solder jumpers had to be placed on the bottom side of the PCB. They look like this:
 
 ![EPROM selection jumpers](./images/eprom_jumpers.png)
@@ -41,8 +43,8 @@ These jumpers HAVE to be configured before plugging the cartridge to your C64! D
 
 Here is the table for configuring the jumpers on most common variants of EPROMS and their FLASH counterparts.
 
-| Jumper      | 27C512  | 27C010  | 29F010  | 27C020  | 29F020  | 27C040  | 29F040  |
-|-------------|---------|---------|---------|---------|---------|---------|---------|
+| Jumper      |    27C512     |    27C010     |    29F010     |    27C020     |    29F020     |    27C040     |    29F040     |
+|-------------|---------------|---------------|---------------|---------------|---------------|---------------|---------------|
 | PIN1        | ```[X X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X X=X]``` |
 | PIN31       | ```[X X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X=X X]``` | ```[X X=X]``` | ```[X=X X]``` |
 | 28PIN/32PIN | ```[X=X X]``` | ```[X X=X]``` | ```[X X=X]``` | ```[X X=X]``` | ```[X X=X]``` | ```[X X=X]``` | ```[X X=X]``` |
@@ -52,9 +54,50 @@ Precautions have been taken to ensure the corectness of the table above. Please,
 Beyond 512Kb
 ------------
 
-Full 1Mb is achievable using a 27C080 or 27C801 EPROM. Other types of memory are not supported. On the right top side of the PCB there are two jumpers marked as "1MB Extend". You should leave out connections on the jumper PIN1 on the bottom side, move the jumper from CE to OE and connect the 1MB jumper, as seen in the pictures. Note that this breaks Ocean compatibility.
+Full 1Mb is achievable using a 27C080 or 27C801 EPROM. Other types of memory are not supported. On the right top side of the PCB there are two jumpers marked as "1MB Extend". You should **leave out connections on the jumper PIN1 on the bottom side and configure other jumpers as for 27C040**, move the jumper in the "1MB Extend" block from CE to OE and connect the 1MB jumper, as seen in the pictures. Note that this breaks Ocean compatibility.
 
 ![1mb jumpers](./images/1mb_jumpers.png)
+
+Advanced Jumper Configuration
+-----------------------------
+
+The board has 5 jumpers that are associated with change of functions from Magic Desk to Ocean (and others). Ocean cartridges are differently mapped in memory, depending on their size. 128k and 512k games use plain 8k /EXROM mapping, but 256k games need to see two different banks in the 16k window.
+
+**MODE** - Completely disable or enable usage of the bit 8 of latch, so Ocean images can work.
+When in position **OCEAN** - bit 8 is disabled, in **MAGIC DESK** - Enabled. Default is **MAGIC DESK**
+
+**LOCK** - Enable or disable latch locking when the latch bit 8 is set (for Ocean, EasyFlash conversions and C64GS). position **YES** - Enabled, **NO** - Disabled. Default is **YES**. This jumper has no effect if MODE is set to OCEAN position.
+
+The effect of this jumper is that you can remove the cartridge from the memory map by setting bit 8 high, but if needed, it can be re-enabled. 
+
+**SIZE** - Map C64 A13 to A18 of the EPROM (for 16K configurations). To be used in conjuction with **GAME** and **MD** jumper. If GAME jumper is set, and **SIZE** is left at 8k position, both 8k windows show the same data. If **SIZE** is in 16k position, two 8k windows show different data. 
+
+**GAME** - Enable 16K mapping ($8000-$9FFF & $A000-$BFFF) for EasyFlash conversions and Ocean carts that require two 8k banks. Depending on **SIZE**, this will either show the same 8K bank mirrored in both windows (if **SIZE** is in 8k position) or two different 8k banks (if **SIZE** is set to 16k)
+
+**MD** - If no 16k configuration is needed, leave closed and don't install diodes and resistor on the bottom. If any 16K configuration is needed, cut and install 2x1N4148 diodes and 10k resistor.
+
+Examples for configuring jumpers
+--------------------------------
+
+#### Ocean 128k
+(Batman The Movie, Double Dragon, Navy Seals, Pang etc.)
+Use a 128k EPROM or FLASH, set the memory type selection jumpers accordingly. Move **MODE** from MAGIC DESK to OCEAN.
+#### Ocean 256K
+(Shadow of the Beast, Robocop 2, Chase HQ 2)
+Use a 512k EPROM or FLASH. Double up the image, to fill entire EPROM. Set memory type selection jumpers accordingly.
+**MODE** Ocean, **LOCK** No, **SIZE** 16k, **GAME** connected, **MD** disconnected, install resistor and diodes.
+#### Ocean 512k
+(Terminator 2)
+Use a 512k EPROM or FLASH, set the memory type selection jumpers accordingly. Move **MODE** from MAGIC DESK to OCEAN.
+#### C64GS / System 3
+Myth and Last Ninja work with the following configuration:
+**MODE** Magic, **LOCK** No, **SIZE** 8k, **GAME** disconnected, **MD** connected.
+Myth reqires you to type **SYS 3 MYTH** on the black screen)
+C64GS cartridge doesn't work - writes wrong banks as it uses STA $DE00,X - this would need to be changed to STX $DE00, and one STA $DE00 needs to be changed to LDA #$00, STA $DE00. I'm investigating the possible patch.
+#### EasyFlash conversions
+Mayhem in Monsterland (from SAM) - Export using crt2chip, find all banking routines and patch them to use $0x instead of $4x. $de02 access - patch out by NOP. no lock, game, magic, 16k, cut md, install diodes and resistor
+CREATURES 2: magic, 8k
+
 
 RESET button
 ------------
@@ -72,7 +115,10 @@ Enclosure compatibility
 The PCB is designed so it can be used in various types of cartridge cases. It has been mainly designed to fit the "Stumpy" cartridge from TFW8B, but it also fits the original Commodore cases and cases from the Polish companies KRADEX / MASZCZYK which are available at some retailers in Europe. It also fits in a 3D-printed case from the model available at Thingiverse. Unfortunately, I don't have all of the cartridge cases available in the market, so the design is NOT tested to fit with: Individual Computers' and Shareware Plus' (and all other currently available but not mentioned here) cases. If anyone wants to donate these types of cartridge cases, adjustments to the PCB could be made and a "one board fits all" PCB could be produced.
 Please note - the cartridge cases from KRADEX / MASZCZYK are "low profile", and you cannot use a socket for the EPROM with this type of cases!
 
-### License
+![cartridges_in_case](./images/cartridges_in_case.png)
+
+License
+-------
 c64-uni-cart is Open Hardware licensed under the [CERN OHL v. 1.2](http://ohwr.org/cernohl), released by Marko Šolajić in 2020. You may redistribute and modify this documentation under the terms of the CERN OHL v.1.2.
 
 A copy of the full license is included in file [LICENSE.txt](LICENSE.txt)
