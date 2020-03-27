@@ -79,23 +79,37 @@ The effect of this jumper is that you can remove the cartridge from the memory m
 Examples for configuring jumpers
 --------------------------------
 
-#### Ocean 128k
+### Ocean 128k
 (Batman The Movie, Double Dragon, Navy Seals, Pang etc.)
+
 Use a 128k EPROM or FLASH, set the memory type selection jumpers accordingly. Move **MODE** from MAGIC DESK to OCEAN.
-#### Ocean 256K
+
+### Ocean 256K
 (Shadow of the Beast, Robocop 2, Chase HQ 2)
+
 Use a 512k EPROM or FLASH. Double up the image, to fill entire EPROM. Set memory type selection jumpers accordingly.
+
 **MODE** Ocean, **LOCK** No, **SIZE** 16k, **GAME** connected, **MD** disconnected, install resistor and diodes.
-#### Ocean 512k
+
+### Ocean 512k
 (Terminator 2)
+
 Use a 512k EPROM or FLASH, set the memory type selection jumpers accordingly. Move **MODE** from MAGIC DESK to OCEAN.
-#### C64GS / System 3
+
+### C64GS / System 3
 Myth and Last Ninja work with the following configuration:
+
 **MODE** Magic, **LOCK** No, **SIZE** 8k, **GAME** disconnected, **MD** connected.
-Myth reqires you to type **SYS 3 MYTH** on the black screen)
+
+(Myth reqires you to type **SYS 3 MYTH** on the black screen)
+
 C64GS cartridge doesn't work - writes wrong banks as it uses STA $DE00,X - this would need to be changed to STX $DE00, and one STA $DE00 needs to be changed to LDA #$00, STA $DE00. I'm investigating the possible patch.
-#### EasyFlash conversions
-Mayhem in Monsterland (from SAM) - Export using crt2chip, find all banking routines and patch them to use $0x instead of $4x. $de02 access - patch out by NOP. no lock, game, magic, 16k, cut md, install diodes and resistor
+
+### EasyFlash conversions
+Some of EasyFlash games can be converted to use this cartridge. Usually, if the game doesn't use eAPI, then it can be converted.
+
+Mayhem in Monsterland https://csdb.dk/release/?id=127251 - Export using crt2chip, find all banking routines and patch them to use $0x instead of $4x. $de02 access - patch out by NOP. no lock, game, magic, 16k, cut md, install diodes and resistor
+
 CREATURES 2: magic, 8k
 
 
