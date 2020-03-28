@@ -9,7 +9,7 @@ This project is free to use and you can use any PCB manufacturer by downloading 
 
 You will get cheap and professionally made PCBs, I will get credits that will help with this and [other projects](https://www.pcbway.com/project/member/?bmbno=1DE407A1-1650-47). Also, if you have to register to that site, [you can use this link](https://www.pcbway.com/setinvite.aspx?inviteid=296307) to get bonus initial credit.
 
-![PCB Top](./c64-uni-cart_top.png)
+![PCB Top](./images/c64-uni-cart_top.png)
 
 Hardware Description
 --------------------
@@ -122,7 +122,8 @@ Some of EasyFlash games can be converted to use this cartridge. Usually, if the 
 - [Creatures 2](https://csdb.dk/release/?id=129448)
     - Requres a 512Kb chip
     - Export the .crt file using [crt2chip2](https://csdb.dk/release/?id=187607)
-    - Minimal startup code and vector initialization needs to be added to the first bank of the cartridge file ($0000 - $2000)
+    - Only the U4 file is needed.
+    - Minimal startup code and vector initialization needs to be added to the first bank of the cartridge file ($0000 - $2000), part of the code is in U3 file. There is some empty space at $1FE0, use it wisely...
     - CBM80 signature needs to be altered to point to the newly added startup code
     - Use the following jumper settings: **MODE** Magic, **LOCK** No, **SIZE** 8k, **GAME** disconnected, **MD** connected, resistor and diodes **NOT** installed.
     - Patch file for use with bspatch ([Windows](https://www.pokorra.de/coding/bsdiff.html) / [Linux](http://www.daemonology.net/bsdiff/)) available [HERE](./patch/Creatures2.diff)
@@ -155,11 +156,13 @@ But, where are the EAGLE schematic and PCB design?
 
 Glad that you asked. The schematic is available as a .pdf file, and for the time being I'm making only the Gerbers available, because of people taking credit for my designs, removing texts and presenting the cartridges as their own product, thus breaching the license, and later refusing to take action upon notice. I hope that you can understand. You can see from the photos, this was not an easy task to route. If you have good intentions, I will provide you the files via e-mail or other communications channel. The EAGLE files will be made available 6 months from the date of the release (on 1st of October 2020.)
 
+![PCB Artwork](./images/pcb_artwork.png)
+
 Revision history
 ----------------
 
 - Rev.1
-    - Initial release
+    - Initial release, not public
 - Rev.2
     - Clearance issue with the diodes and GAME jumper addressed
     - Added 1MB Extension jumpers
