@@ -128,12 +128,12 @@ Some of EasyFlash games can be converted to use this cartridge. Usually, if the 
     - Use the following jumper settings: **MODE** Magic, **LOCK** No, **SIZE** 8k, **GAME** disconnected, **MD** connected, resistor and diodes **NOT** installed.
     - Patch file for use with bspatch ([Windows](https://www.pokorra.de/coding/bsdiff.html) / [Linux](http://www.daemonology.net/bsdiff/)) available [HERE](./patch/Creatures2.diff)
     
-As I patch more games, I'll describe the process here. Next candidates are Creatures and Prince of Persia.
+As I patch more games, I'll describe the process here. Useful tools for patching are [C64Debugger](https://csdb.dk/release/?id=187948) and [Regenerator](https://csdb.dk/release/?id=149429).
 
 RESET button
 ------------
 
-The pads for the RESET button will accomodate a vertical miniature tact switch.
+The pads for the RESET button will accomodate a vertical miniature tact switch. 
 
 Capacitors
 ----------
