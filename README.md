@@ -3,7 +3,7 @@ Hardware design of Magic Desk and Ocean compatible cartridge for the Commodore 6
 
 This is the hardware part that accompanies the project of [Magic Desk Cartridge Generator](https://bitbucket.org/zzarko/magic-desk-cartridge-generator/)
 
-This project is free and you can use any PCB manufacturer by downloading the Gerber files, but if you would like to support my work and help with further C64 hardware development you can order these PCBs on PCBWay trough this link:
+This project is free to use and you can use any PCB manufacturer by downloading the Gerber files, but if you would like to support my work and help with further C64 hardware development you can order these PCBs on PCBWay trough this link:
 
 [![PCB from PCBWay](https://www.pcbway.com/project/img/images/frompcbway.png)](https://www.pcbway.com/project/shareproject/updatethislink.html)
 
@@ -106,9 +106,10 @@ Examples for configuring jumpers
 - **MODE** Magic, **LOCK** No, **SIZE** 8k, **GAME** disconnected, **MD** connected, resistor and diodes **NOT** installed.
 - Myth reqires you to type **SYS 3 MYTH** on the black screen to start the game.
 - C64GS cartridge doesn't work - it writes wrong banks as it uses STA $DE00,X. This would need to be changed to STX $DE00, and one STA $DE00 needs to be changed to LDA #$00, STA $DE00. I'm investigating the possible patch.
+- Probably the former is also valid for the recently leaked Elite .crt files. I haven't investigated them yet.
 
 ### EasyFlash conversions
-Some of EasyFlash games can be converted to use this cartridge. Usually, if the game doesn't use eAPI or is not converted with disk2easyflash, then it can be converted. The startup code (because Easyflash starts in ULTIMAX mode which cannot be emulated here) needs also to be moved. Here are some games that I successfully converted to use this cartridge:
+Some of EasyFlash games can be converted to use this cartridge. Usually, if the game doesn't use eAPI or is not converted with disk2easyflash, then it can be converted. The startup code (because Easyflash starts in ULTIMAX mode which cannot be emulated here) needs also to be moved, if needed. Here are some games that I successfully converted to use this cartridge:
 - [Mayhem in Monsterland](https://csdb.dk/release/?id=127251)
     - Requres a 512Kb chip
     - Export the .crt file using [crt2chip2](https://csdb.dk/release/?id=187607)
@@ -118,8 +119,15 @@ Some of EasyFlash games can be converted to use this cartridge. Usually, if the 
     - Use the following jumper settings: **MODE** Magic, **LOCK** No, **SIZE** 16k, **GAME** connected, **MD** disconnected, resistor and diodes installed.
     - Patch file for use with bspatch ([Windows](https://www.pokorra.de/coding/bsdiff.html) / [Linux](http://www.daemonology.net/bsdiff/)) available [HERE](./patch/MayhemInMonsterland.diff)
 
-CREATURES 2: magic, 8k
-
+- [Creatures 2](https://csdb.dk/release/?id=129448)
+    - Requres a 512Kb chip
+    - Export the .crt file using [crt2chip2](https://csdb.dk/release/?id=187607)
+    - Minimal startup code and vector initialization needs to be added to the first bank of the cartridge file ($0000 - $2000)
+    - CBM80 signature needs to be altered to point to the newly added startup code
+    - Use the following jumper settings: **MODE** Magic, **LOCK** No, **SIZE** 8k, **GAME** disconnected, **MD** connected, resistor and diodes **NOT** installed.
+    - Patch file for use with bspatch ([Windows](https://www.pokorra.de/coding/bsdiff.html) / [Linux](http://www.daemonology.net/bsdiff/)) available [HERE](./patch/Creatures2.diff)
+    
+As I patch more games, I'll describe the process here. Next candidates are Creatures and Prince of Persia.
 
 RESET button
 ------------
@@ -134,11 +142,29 @@ The capacitors are not needed, but you can populate them. They are 100nF 50V MLC
 Enclosure compatibility
 -----------------------
 
-The PCB is designed so it can be used in various types of cartridge cases. It has been mainly designed to fit the "Stumpy" cartridge from TFW8B, but it also fits the original Commodore cases and cases from the Polish companies KRADEX / MASZCZYK which are available at some retailers in Europe. It also fits in a 3D-printed case from the model available at Thingiverse. Unfortunately, I don't have all of the cartridge cases available in the market, so the design is NOT tested to fit with: Individual Computers' and Shareware Plus' (and all other currently available but not mentioned here) cases. If anyone wants to donate these types of cartridge cases, adjustments to the PCB could be made and a "one board fits all" PCB could be produced.
+The PCB is designed so it can be used in various types of cartridge cases. It has been mainly designed to fit the "Stumpy" cartridge from [TFW8B](https://www.thefuturewas8bit.com/c64romcart.html), but it also fits the original Commodore cases and cases from the Polish companies KRADEX / MASZCZYK which are available at some retailers in Europe. It also fits in a 3D-printed case from the model available at Thingiverse. Unfortunately, I don't have all of the cartridge cases available in the market, so the design is NOT tested to fit with: Individual Computers' and Shareware Plus' (and all other currently available but not mentioned here) cases. 
 
 Please note - the cartridge cases from KRADEX / MASZCZYK are "low profile", and you cannot use a socket for the EPROM with this type of cases!
 
 ![cartridges_in_case](./images/cartridges_in_case.png)
+
+Also, recently TFW8B came out with their [MARINA 64 cartridge](https://www.thefuturewas8bit.com/shop/commodore/c64/marina64.html). This was not made to compete with their design - actually, development was done concurrently, not knowing what the other party was doing. 
+
+But, where are the EAGLE schematic and PCB design?
+--------------------------------------------------
+
+Glad that you asked. The schematic is available as a .pdf file, and for the time being I'm making only the Gerbers available, because of people taking credit for my designs, removing texts and presenting the cartridges as their own product, thus breaching the license, and later refusing to take action upon notice. I hope that you can understand. You can see from the photos, this was not an easy task to route. If you have good intentions, I will provide you the files via e-mail or other communications channel. The EAGLE files will be made available 6 months from the date of the release (on 1st of October 2020.)
+
+Revision history
+----------------
+
+- Rev.1
+    - Initial release
+- Rev.2
+    - Clearance issue with the diodes and GAME jumper addressed
+    - Added 1MB Extension jumpers
+    - Enlarged all jumpers
+    - Cosmetic improvements
 
 License
 -------
