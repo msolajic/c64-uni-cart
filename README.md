@@ -128,6 +128,16 @@ Some of EasyFlash games can be converted to use this cartridge. Usually, if the 
     - Use the following jumper settings: **MODE** Magic, **LOCK** No, **SIZE** 8k, **GAME** disconnected, **MD** connected, resistor and diodes **NOT** installed.
     - Patch file for use with bspatch ([Windows](https://www.pokorra.de/coding/bsdiff.html) / [Linux](http://www.daemonology.net/bsdiff/)) available [HERE](./patch/Creatures2.diff)
     
+- [Prince of Persia](https://csdb.dk/release/?id=102540)
+    - Requres a 512Kb chip
+    - Export the .crt file using [crt2chip2](https://csdb.dk/release/?id=187607)
+    - Using a hex editor, load the resulting U4 file at offset $00000 and U3 file at offset $40000, and save them as one file.
+    - Startup code and vector initialization needs to be patched, as it will be available at $A000 and not at $E000. 
+    - CBM80 signature needs to be added to point to the startup code. The BASIC SYS command is at offset $00000, you can patch it out as it turns out it is not used.
+    - Use the following jumper settings: **MODE** Magic, **LOCK** No, **SIZE** 16k, **GAME** connected, **MD** disconnected, resistor and diodes installed.
+    - Patch file for use with bspatch ([Windows](https://www.pokorra.de/coding/bsdiff.html) / [Linux](http://www.daemonology.net/bsdiff/)) available [HERE](./patch/pop.diff)
+    - **NOTE**: The game is not play-tested, as I suck in playing it. Feedback is appreciated. Also, probably the save function (available after level 4) will not work and will crash the machine.
+    
 As I patch more games, I'll describe the process here. Useful tools for patching are [C64Debugger](https://csdb.dk/release/?id=187948) and [Regenerator](https://csdb.dk/release/?id=149429).
 
 RESET button
