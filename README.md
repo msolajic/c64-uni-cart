@@ -9,6 +9,8 @@ This project is free to use and you can use any PCB manufacturer by downloading 
 
 You will get cheap and professionally made PCBs, I will get credits that will help with this and [other projects](https://www.pcbway.com/project/member/?bmbno=1DE407A1-1650-47). Also, if you have to register to that site, [you can use this link](https://www.pcbway.com/setinvite.aspx?inviteid=296307) to get bonus initial credit.
 
+You can also purchase a complete kit from [CBMStuff](https://www.cbmstuff.com/proddetail.php?prod=CRXHBP). Thanks Jim!
+
 ![PCB Top](./images/c64-uni-cart_top.png)
 
 Hardware Description
@@ -161,10 +163,12 @@ Please note - the cartridge cases from KRADEX / MASZCZYK are "low profile", and 
 
 Also, recently TFW8B came out with their [MARINA 64 cartridge](https://www.thefuturewas8bit.com/shop/commodore/c64/marina64.html). This was not made to compete with their design - actually, development was done concurrently, not knowing what the other party was doing. 
 
-But, where are the EAGLE schematic and PCB design?
---------------------------------------------------
+But, where are the EAGLE schematic and PCB design? (Updated!)
+-------------------------------------------------------------
 
-Glad that you asked. The schematic is available as a .pdf file, and for the time being I'm making only the Gerbers available, because of people taking credit for my designs, removing texts and presenting the cartridges as their own product, thus breaching the license, and later refusing to take action upon notice. I hope that you can understand. You can see from the photos, this was not an easy task to route. If you have good intentions, I will provide you the files via e-mail or other communications channel. The EAGLE files will be made available 6 months from the date of the release (on 1st of October 2020.)
+~~Glad that you asked. The schematic is available as a .pdf file, and for the time being I'm making only the Gerbers available, because of people taking credit for my designs, removing texts and presenting the cartridges as their own product, thus breaching the license, and later refusing to take action upon notice. I hope that you can understand. You can see from the photos, this was not an easy task to route. If you have good intentions, I will provide you the files via e-mail or other communications channel. The EAGLE files will be made available 6 months from the date of the release (on 1st of October 2020.)~~
+
+EAGLE .sch and .brd files are now available to download in this repository. Please, respect the license when downloading the files.
 
 ![PCB Artwork](./images/pcb_artwork.png)
 
