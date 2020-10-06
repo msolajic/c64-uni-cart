@@ -192,6 +192,7 @@ My thanks go to:
 - Dan Tootil, for his questions and suggestions that lead to this version of the Cartridge
 - TFW8B, for creating such an awesome cartridge case
 - Sven Petersen, Edu Arana & Hans Petter Dalsklev, for their knowledge and hardware they are sharing with the community
+- Jim Drew, for acknowledging and making this the official CRX2020 Hardware project
 - Everyone who ordered any of my PCBs from PCBWay
 - and all other people in the Commodore 64 community that I forgot to mention, you guys are awesome!
 
