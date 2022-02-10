@@ -11,7 +11,7 @@ You will get cheap and professionally made PCBs, I will get credits that will he
 
 You can also purchase a complete kit from [CBMStuff](https://www.cbmstuff.com/proddetail.php?prod=CRXHBP). Thanks Jim!
 
-![PCB Top](./images/c64-uni-cart_top_rev4.png)
+![PCB Top](./images/c64-uni-cart_top-rev4.png)
 
 Hardware Description
 --------------------
