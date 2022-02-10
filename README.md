@@ -168,7 +168,7 @@ But, where are the EAGLE schematic and PCB design? (Updated!)
 
 EAGLE .sch and .brd files are now available to download in this repository. Please, respect the license when downloading the files.
 
-![PCB Artwork](./images/pcb_artwork.png)
+![PCB Artwork](./images/pcb_artwork_rev4.png)
 
 Revision history
 ----------------
@@ -185,6 +185,7 @@ Revision history
 - Rev.4
     - Added place for (optional) 2 LEDs and 2 resistors, for that special bling if you have a transparent case. For best results, use colour changing 3mm LEDs.
     - Table with jumpers on the bottom side is now more legible
+    - Added a solder mask stop on the edge connector
     
 Thanks:
 -------
