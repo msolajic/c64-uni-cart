@@ -182,6 +182,11 @@ Revision history
     - Added 1MB Extension jumpers
     - Enlarged all jumpers
     - Cosmetic improvements
+- Rev.3
+    - Internal revision
+- Rev.4
+    - Added place for (optional) 2 LEDs and 2 resistors, for that special bling if you have a transparent case. For best results, use colour changing 3mm LEDs.
+
     
 Thanks:
 -------
