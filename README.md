@@ -9,8 +9,6 @@ This project is free to use and you can use any PCB manufacturer by downloading 
 
 You will get cheap and professionally made PCBs, I will get credits that will help with this and [other projects](https://www.pcbway.com/project/member/?bmbno=1DE407A1-1650-47). Also, if you have to register to that site, [you can use this link](https://www.pcbway.com/setinvite.aspx?inviteid=296307) to get bonus initial credit.
 
-You can also purchase a complete kit from [CBMStuff](https://www.cbmstuff.com/proddetail.php?prod=CRXHBP). Thanks Jim!
-
 ![PCB Top](./images/c64-uni-cart_top-rev4.png)
 
 Hardware Description
@@ -183,10 +181,10 @@ Revision history
     - Enlarged all jumpers
     - Cosmetic improvements
 - Rev.3
-    - Internal revision
+    - Internal revision, not public
 - Rev.4
     - Added place for (optional) 2 LEDs and 2 resistors, for that special bling if you have a transparent case. For best results, use colour changing 3mm LEDs.
-
+    - Table with jumpers on the bottom side is now more legible
     
 Thanks:
 -------
