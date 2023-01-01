@@ -9,7 +9,7 @@ This project is free to use and you can use any PCB manufacturer by downloading 
 
 You will get cheap and professionally made PCBs, I will get credits that will help with this and [other projects](https://www.pcbway.com/project/member/?bmbno=1DE407A1-1650-47). Also, if you have to register to that site, [you can use this link](https://www.pcbway.com/setinvite.aspx?inviteid=296307) to get bonus initial credit.
 
-![PCB Top](./images/c64-uni-cart_top-rev4.png)
+![PCB Top](./images/c64-uni-cart_top-rev5.png)
 
 Hardware Description
 --------------------
@@ -153,11 +153,11 @@ The capacitors are not needed, but you can populate them. They are 100nF 50V MLC
 Enclosure compatibility
 -----------------------
 
-The PCB is designed so it can be used in various types of cartridge cases. It has been mainly designed to fit the "Stumpy" cartridge from [TFW8B](https://www.thefuturewas8bit.com/c64romcart.html), but it also fits the original Commodore cases and cases from the Polish companies KRADEX / MASZCZYK which are available at some retailers in Europe. It also fits in a 3D-printed case from the model available at Thingiverse. Unfortunately, I don't have all of the cartridge cases available in the market, so the design is NOT tested to fit with: Individual Computers' and Shareware Plus' (and all other currently available but not mentioned here) cases. 
+The PCB is designed so it can be used in various types of cartridge cases. It has been mainly designed to fit the "Stumpy" cartridge from [TFW8B](https://www.thefuturewas8bit.com/c64romcart.html), but it also fits the original Commodore cases and cases from the Polish companies KRADEX / MASZCZYK which are available at some retailers in Europe. It also fits in several 3D-printed cases available at Thingiverse, and there is also one tailor-made for this cartridge, [case for universal C64 512K cartridge by Vokgear] (https://www.thingiverse.com/thing:4801176). In revision 5, a hole has been added to support use of [Protoparts] (https://www.protoparts.at/product-category/gehaeuse/) enclosures. Unfortunately, I don't have all of the cartridge cases available in the market, so the design is NOT tested to fit with: Individual Computers' and Shareware Plus' (and all other currently available but not mentioned here) cases. 
 
 Please note - the cartridge cases from KRADEX / MASZCZYK are "low profile", and you cannot use a socket for the EPROM with this type of cases!
 
-![cartridges_in_case](./images/cartridges_in_case.png)
+![cartridges_in_case_rev5](./images/cartridges_in_case_rev5.png)
 
 Also, recently TFW8B came out with their [MARINA 64 cartridge](https://www.thefuturewas8bit.com/shop/commodore/c64/marina64.html). This was not made to compete with their design - actually, development was done concurrently, not knowing what the other party was doing. 
 
@@ -168,7 +168,7 @@ But, where are the EAGLE schematic and PCB design? (Updated!)
 
 EAGLE .sch and .brd files are now available to download in this repository. Please, respect the license when downloading the files.
 
-![PCB Artwork](./images/pcb_artwork_rev4.png)
+![PCB Artwork](./images/pcb_artwork_rev5.png)
 
 Revision history
 ----------------
@@ -186,6 +186,8 @@ Revision history
     - Added place for (optional) 2 LEDs and 2 resistors, for that special bling if you have a transparent case. For best results, use colour changing 3mm LEDs.
     - Table with jumpers on the bottom side is now more legible
     - Added a solder mask stop on the edge connector
+- Rev.5
+    - Added a smaller hole above the existing one, to enable use of [Protoparts] (https://www.protoparts.at/product-category/gehaeuse/) enclosures. Probably now also fits [Individual Computers] (http://wiki.icomp.de/wiki/C64_Cartridge_Cases) cases.
     
 Thanks:
 -------
